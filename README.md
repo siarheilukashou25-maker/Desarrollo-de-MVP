@@ -1,0 +1,1 @@
+![planificacion](https://imgur.com/gallery/planificacion-Wvrf5e1)
