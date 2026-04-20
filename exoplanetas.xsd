@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:simpleType name="tipoCodigoPlaneta">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="EP-[0-9]{4}-[ABC]" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipoTemperatura">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="-273.15" />
+            <xs:maxInclusive value="5000" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipoComponente">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Nitrógeno" />
+            <xs:enumeration value="Oxígeno" />
+            <xs:enumeration value="Metano" />
+            <xs:enumeration value="CO2" />
+            <xs:enumeration value="Argón" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="DeepSpaceInventory">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Exoplaneta" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Codigo" type="tipoCodigoPlaneta" />
+                            <xs:element name="NombreComun" type="xs:string" />
+                            <xs:element name="TemperaturaMedia" type="tipoTemperatura" />
+                            <xs:element name="DistanciaAniosLuz">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:decimal">
+                                        <xs:minExclusive value="0" />
+                                        <xs:fractionDigits value="2" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="Atmosfera">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Componente" type="tipoComponente"
+                                            maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
