@@ -1,1 +1,1 @@
-![planificacion](https://i.imgur.com/5djEZhj.jpeg)
+![planificacion](https://i.imgur.com/seC0e4i.jpeg)
